@@ -14,10 +14,10 @@ function App() {
   const onInputChange = useCallback(
     (e) => {
       if (browser.name === 'ios') {
-        setValue(e.target.value.replace(/[^+0-9]/g, ''));
+        setValue(e.replace(/[^+0-9]/g, ''));
         return;
       }
-      setValue(formatPhoneNumber(e.target.value));
+      setValue(formatPhoneNumber(e));
     },
     [browser.name]
   );
@@ -34,16 +34,17 @@ function App() {
         <hr />
         <form onSubmit={() => {}}>
           <input
+            size={'large'}
             pattern="\+7\s\(\d{3}\)\s\d{3,}-\d{2}-\d{2}"
             name="phone"
-            type="phone"
-            inputMode="phone"
-            spellcheck={false}
+            type="tel"
+            inputMode="tel"
+            spellcheck={true}
             autocorrect="off"
             autocapitalize="off"
-            onInput={(e) => console.log(e.target.value)}
             placeholder={'+7 (___) ___-__-__'}
             autoComplete="on"
+            onInput={(e) => onInputChange(e.target.value)}
             onChange={(e) => {
               onInputChange(e.target.value);
             }}
