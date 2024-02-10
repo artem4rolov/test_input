@@ -12,7 +12,7 @@ function App() {
   const [value, setValue] = useState('');
 
   const onInputChange = useCallback((e) => {
-    setValue(formatPhoneNumber(e.target.value));
+    setValue(e.target.value);
   }, []);
 
   return (
@@ -28,7 +28,7 @@ function App() {
         <form onSubmit={() => {}}>
           <input
             size={'large'}
-            pattern="\+7\s\(\d{3}\)\s\d{3,}-\d{2}-\d{2}"
+            pattern="\\s\(\d{3}\)\s\d{3,}-\d{2}-\d{2}"
             name="phone"
             type="tel"
             inputMode="tel"
