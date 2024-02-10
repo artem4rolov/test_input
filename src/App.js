@@ -14,7 +14,11 @@ function App() {
   const onInputChange = useCallback(
     (e) => {
       if (browser.name === 'ios') {
-        setValue(e.replace(/[^+0-9]/g, ''));
+        setValue(
+          String(e.replace(/[^+0-9]/g, '')).length < 10
+            ? `+7${e.replace(/[^+0-9]/g, '')}`
+            : formatPhoneNumber(e.replace(/[^+0-9]/g, ''))
+        );
         return;
       }
       setValue(formatPhoneNumber(e));
