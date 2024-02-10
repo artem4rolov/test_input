@@ -28,15 +28,18 @@ function App() {
         <input
           size={'large'}
           name={'enterMobile'}
-          type="phone"
-          inputMode="numeric"
+          type="text"
+          inputMode="tel"
+          spellcheck={true}
+          autocorrect="off"
+          autocapitalize="off"
           placeholder={'+7 (___) ___-__-__'}
           autoComplete="on"
           onChange={onInputChange}
           value={value}
           style={{
-            padding: '5px 10px',
-            fontSize: '14px',
+            padding: '10px 15px',
+            fontSize: '24px',
           }}
         />
       </header>
