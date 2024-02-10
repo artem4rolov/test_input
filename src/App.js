@@ -31,6 +31,7 @@ function App() {
           type="phone"
           inputMode="numeric"
           placeholder={'+7 (___) ___-__-__'}
+          autoComplete="on"
           onChange={onInputChange}
           value={value}
           style={{
