@@ -25,23 +25,26 @@ function App() {
           </p>
         )}
         <hr />
-        <input
-          size={'large'}
-          name={'enterMobile'}
-          type="text"
-          inputMode="tel"
-          spellcheck={true}
-          autocorrect="off"
-          autocapitalize="off"
-          placeholder={'+7 (___) ___-__-__'}
-          autoComplete="on"
-          onChange={onInputChange}
-          value={value}
-          style={{
-            padding: '10px 15px',
-            fontSize: '24px',
-          }}
-        />
+        <form onSubmit={() => {}}>
+          <input
+            size={'large'}
+            pattern="\+7\s\(\d{3}\)\s\d{3,}-\d{2}-\d{2}"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            spellcheck={true}
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder={'+7 (___) ___-__-__'}
+            autoComplete="on"
+            onChange={onInputChange}
+            value={value}
+            style={{
+              padding: '10px 15px',
+              fontSize: '24px',
+            }}
+          />
+        </form>
       </header>
     </div>
   );
