@@ -11,9 +11,16 @@ function App() {
   // const [field, meta, { setValue }] = useField({ name: 'enterMobile' });
   const [value, setValue] = useState('');
 
-  const onInputChange = useCallback((e) => {
-    setValue(formatPhoneNumber(e.target.value));
-  }, []);
+  const onInputChange = useCallback(
+    (e) => {
+      if (browser.name === 'ios') {
+        setValue(e.target.value.replace(/[^+0-9]/g, ''));
+        return;
+      }
+      setValue(formatPhoneNumber(e.target.value));
+    },
+    [browser.name]
+  );
 
   return (
     <div className="App">
@@ -27,18 +34,23 @@ function App() {
         <hr />
         <form onSubmit={() => {}}>
           <input
-            size={'large'}
             pattern="\+7\s\(\d{3}\)\s\d{3,}-\d{2}-\d{2}"
             name="phone"
-            type="tel"
-            inputMode="tel"
-            spellcheck={true}
+            type="phone"
+            inputMode="phone"
+            spellcheck={false}
             autocorrect="off"
             autocapitalize="off"
+            onInput={(e) => console.log(e.target.value)}
             placeholder={'+7 (___) ___-__-__'}
             autoComplete="on"
-            onChange={onInputChange}
-            value={value}
+            onChange={(e) => {
+              onInputChange(e.target.value);
+            }}
+            // onPaste={(e) => {
+            //   browser.name === 'ios' && setValue(e.target.value);
+            // }}
+            value={value ?? '0'}
             style={{
               padding: '10px 15px',
               fontSize: '24px',
