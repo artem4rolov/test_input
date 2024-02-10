@@ -4,7 +4,7 @@ export function formatPhoneNumber(value) {
   if (value === '+7') return '';
   if (onlyNums === '8' || onlyNums === '7' || onlyNums === '+') return '+7 ';
   // Запись через конкатенацию чтобы семерка стиралась
-  if (onlyNums.length <= 1) return '+7' + ` (${onlyNums.slice(0, 2)}`;
+  if (onlyNums.length <= 1) return '+7' + ` (${onlyNums.slice(1, 2)}`;
   if (onlyNums.length <= 4) return '+7' + ` (${onlyNums.slice(1, 4)}`;
   if (onlyNums.length <= 7)
     return '+7' + ` (${onlyNums.slice(1, 4)}) ${onlyNums.slice(4, 7)}`;

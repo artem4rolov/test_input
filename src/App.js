@@ -12,7 +12,7 @@ function App() {
   const [value, setValue] = useState('');
 
   const onInputChange = useCallback((e) => {
-    setValue(e.target.value);
+    setValue(formatPhoneNumber(e.target.value));
   }, []);
 
   return (
