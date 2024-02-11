@@ -1,4 +1,6 @@
 export function formatPhoneNumber(value) {
+  console.log(value);
+  console.log(value.replace(/[^\d]/gm, ''));
   if (!value) return value;
   const onlyNums = value.replace(/[^\d]/gm, '');
   if (value === '+7') return '';
